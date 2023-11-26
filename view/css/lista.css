@@ -1,20 +1,48 @@
-body {
+.global {
+    width: 90%;
+    padding: 5%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+thead,
+tr,
+th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+table,
+tbody,
+tr,
+td {
+    text-align: left;
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffdce2;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 500;
     color: black;
     text-align: center;
     padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffdce2;
+    z-index: 1000;
 }
 
 nav #encabezado-link a {
@@ -27,6 +55,8 @@ nav ul {
     list-style: none;
     padding: 20px;
     margin: 0px;
+    text-align: center;
+
 }
 
 nav li {
@@ -40,10 +70,16 @@ nav a {
     font-size: 22px;
     font-weight: 700;
     transition: color 0.3s;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav a:hover {
     color: rgb(209, 113, 113);
+}
+
+.letra-ch {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
 }
 
 nav li:hover>ul {
@@ -56,8 +92,9 @@ nav ul ul {
     position: absolute;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 5px;
+    width: 150px;
     z-index: 1;
+
 }
 
 nav ul li:hover>ul {
@@ -67,44 +104,4 @@ nav ul li:hover>ul {
 nav ul ul li {
     display: block;
     width: 80%;
-}
-
-.letra-ch {
-
-    font-size: 17px;
-}
-
-.container {
-    display: flex;
-    height: calc(100vh - 60px);
-}
-
-.half {
-    flex: 0.85;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.image {
-    background-image: url('../images/ubicacion.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-}
-
-.info {
-    flex: 1;
-    padding: 20px;
-}
-
-.info .map-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.info iframe {
-    width: 100%;
-    height: 100%;
 }

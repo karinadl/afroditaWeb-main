@@ -1,5 +1,3 @@
-
-
 const id_prod = document.getElementById('productId')
 const btn = document.getElementById('eliminar');
 
@@ -9,16 +7,16 @@ productos();
 
 function productos() {
     fetch('http://localhost:3000/product')
-        .then(productos => productos.json())
-        .then(productos => insertProductos(productos));
+        .then(producto => producto.json())
+        .then(producto => insertProductos(producto));
 
 };
 
 //!Constante para ingresar los providers al select
-const insertProductos = (productos) => {
-    a = productos;
-    for (i = 0; i < productos.length; i++) {
-        htmlSelect = "<option>" + productos[i].name + "</option>";
+const insertProductos = (producto) => {
+    a = producto;
+    for (i = 0; i < producto.length; i++) {
+        htmlSelect = "<option>" + producto[i].name + "</option>";
         sp.insertAdjacentHTML("beforeend", htmlSelect);
     }
 }

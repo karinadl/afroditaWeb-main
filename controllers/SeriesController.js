@@ -1,23 +1,23 @@
 //Variables globales
 var prueba = "";
-var spawner  = "";
+var spawner = "";
 var data_to_pass_in = {};
 
 //Funcion que llama al proceso de python a partir del objeto json data_to_pass_in
-function callpython(){
+function callpython() {
     const python_process = spawner('python', ['./python/serie.py', JSON.stringify(data_to_pass_in)]);
-    python_process.stdout.on('data', (data) => {  prueba = JSON.parse(data.toString());  });
+    python_process.stdout.on('data', (data) => { prueba = JSON.parse(data.toString()); });
 }
 
 //Creacion del dataset
-function createDataset(){
-    try{
+function createDataset() {
+    try {
         datos = [];
-        for(var i= 0; i < prueba['table'].length; i++) {
-        
+        for (var i = 0; i < prueba['table'].length; i++) {
+
             //test[date][total][table]
             //predict[date][total][table]
-            datos.push({ 
+            datos.push({
                 "year": prueba['year'][i],
                 "month": prueba['month'][i],
                 "day": prueba['day'][i],
@@ -25,16 +25,16 @@ function createDataset(){
                 "table": prueba['table'][i]
             });
         }
-        
-    }catch(ex){
+
+    } catch (ex) {
         console.log(ex.message);
     }
-    
+
 }
 
 //arima retorna dataset con las fechas y datos correspondientes
 const arima = (req, res) => {
-    try{
+    try {
         spawner = require('child_process').spawn;
         datos = [];
 
@@ -46,15 +46,15 @@ const arima = (req, res) => {
             total: undefined,
             table: undefined
         };
-        
+
         callpython();
 
-        setTimeout(() =>{
+        setTimeout(() => {
             createDataset();
             res.json(datos);
-        }, 15000);
+        }, 27000);
 
-    }catch (error){
+    } catch (error) {
         console.log(error.message);
     }
 }

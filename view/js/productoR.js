@@ -59,11 +59,11 @@ btn.addEventListener('click', () => {
         }).then(res => res.text()).then(res => console.log(res));
         alert('Producto registrado');
 
-        /*nombreP.value = "";
+        nombreP.value = "";
         precio.value = "";
         des.value = "";
         uso.value = "";
         tipo.value = "";
-        exis.value = "";*/
+        exis.value = "";
     }
 });

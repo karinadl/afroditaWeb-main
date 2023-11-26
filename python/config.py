@@ -1,6 +1,6 @@
 #Variables de conexion
 u='root'
-p='19240369'
+p='010601'
 h='localhost'
 db='afrodita'
 po='3307'

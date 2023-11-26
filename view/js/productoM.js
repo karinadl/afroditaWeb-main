@@ -60,11 +60,11 @@ btn.addEventListener('click', () => {
         }).then(res => res.text()).then(res => console.log(res));
         alert('Producto modificado');
 
-        /*nombreP.value = "";
+        nombreP.value = "";
         precio.value = "";
         des.value = "";
         uso.value = "";
         tipo.value = "";
-        exis.value = "";*/
+        exis.value = "";
     }
 });

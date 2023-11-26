@@ -1,19 +1,19 @@
 //Variables globales
 var prueba = "";
-var spawner  = "";
+var spawner = "";
 var data_to_pass_in = {};
 
 //Funcion que llama al proceso de python a partir del objeto json data_to_pass_in
-function callpython(){
+function callpython() {
     const python_process = spawner('python', ['./python/kmeans.py', JSON.stringify(data_to_pass_in)]);
-    python_process.stdout.on('data', (data) => {  prueba = JSON.parse(data.toString());  });
+    python_process.stdout.on('data', (data) => { prueba = JSON.parse(data.toString()); });
 }
 
 //Creacion del dataset
-function createDataset(){
-    for(var i= 0; i < prueba['ids'].length; i++) {
-    
-        switch (prueba['centroids'][i]){
+function createDataset() {
+    for (var i = 0; i < prueba['ids'].length; i++) {
+
+        switch (prueba['centroids'][i]) {
             case 0:
                 color = "#002B5B";
                 break;
@@ -30,7 +30,7 @@ function createDataset(){
                 color = "#16FF00";
                 break;
         }
-        datos.push({ 
+        datos.push({
             "title": prueba['name'][i],
             "id": prueba['ids'][i],
             "x": prueba['x'][i],
@@ -44,7 +44,7 @@ function createDataset(){
 //Constante km retorna dataset con compra 
 const km = (req, res) => {
     const clous = req.params.id;
-    try{
+    try {
         spawner = require('child_process').spawn;
         datos = [];
 
@@ -59,12 +59,12 @@ const km = (req, res) => {
         };
 
         callpython();
-        
-        setTimeout(()=>{    
+
+        setTimeout(() => {
             createDataset();
             res.json(datos);
-        }, 3500);
-    }catch(error){
+        }, 9000);
+    } catch (error) {
         console.log(error.message);
     }
 }
@@ -72,7 +72,7 @@ const km = (req, res) => {
 //kmp retorna dataset con el atributo precio
 const kmp = (req, res) => {
     const clous = req.params.id;
-    try{
+    try {
         spawner = require('child_process').spawn;
         datos = [];
 
@@ -85,15 +85,15 @@ const kmp = (req, res) => {
             y: undefined,
             centroids: undefined
         };
-        
+
         callpython();
 
-        setTimeout(() =>{
+        setTimeout(() => {
             createDataset();
             res.json(datos);
-        }, 3500);
+        }, 9000);
 
-    }catch (error){
+    } catch (error) {
         console.log(error.message)
     }
 }
